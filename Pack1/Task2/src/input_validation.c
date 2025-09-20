@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "../include/input_validation.h"
+#include "input_validation.h"
 
-void print_help_msg(char* program_name)
+void print_help_msg()
 {
     printf("Usage: <amount of requests>\n");
     printf("Next n lines has to consist of only 1 positive number.\n");

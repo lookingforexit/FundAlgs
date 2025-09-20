@@ -1,10 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/input_validation.h"
-#include "../include/sieve_of_eratosthenes.h"
+#include "input_validation.h"
+#include "sieve_of_eratosthenes.h"
 
 int main(int argc, char* argv[])
 {
+    if (argc != 1)
+    {
+        printf("Program has to run without command line flags.\n");
+    }
+
     printf("Amount of requests (>=1): ");
 
     int amount;

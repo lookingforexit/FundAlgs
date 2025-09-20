@@ -7,7 +7,7 @@ typedef enum
     INVALID_ARGUMENT
 } status_code;
 
-void print_help_msg(char* program_name);
+void print_help_msg();
 
 int get_input(int* number, status_code* code);
 
