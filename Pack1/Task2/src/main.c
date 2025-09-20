@@ -8,6 +8,8 @@ int main(int argc, char* argv[])
     if (argc != 1)
     {
         printf("Program has to run without command line flags.\n");
+        print_help_msg(argv[0]);
+        return 1;
     }
 
     printf("Amount of requests (>=1): ");
