@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "../include/math_operations.h"
+#include "math_operations.h"
 
 void print_multiplies(int x)
 {

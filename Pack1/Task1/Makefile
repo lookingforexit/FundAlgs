@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c11 -g -Iinclude
+CFLAGS = -Wall -Wextra -std=c11 -g -Iinclude -Werror
 TARGET = app.out
 
 SRCS = $(wildcard src/*.c)
@@ -9,7 +9,7 @@ HEADERS = $(wildcard include/*.h)
 all: build/$(TARGET)
 
 build/$(TARGET): $(OBJS) 
-	$(CC) $(OBJS) -o $@
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 	
 build/%.o: src/%.c $(HEADERS) | build
 	$(CC) $(CFLAGS) -c $< -o $@

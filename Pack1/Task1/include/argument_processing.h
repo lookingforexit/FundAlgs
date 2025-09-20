@@ -8,7 +8,7 @@ typedef enum
     INVALID_ARGUMENT_COUNT
 } status_code;
 
-const status_code argument_validation(const int argc, char* argv[]);
+status_code argument_validation(const int argc, char* argv[]);
 
 void argument_processing(char* argv[]);
 

@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "../include/argument_processing.h"
-#include "../include/math_operations.h"
+#include "argument_processing.h"
+#include "math_operations.h"
 
 int main(int argc, char *argv[])
 {

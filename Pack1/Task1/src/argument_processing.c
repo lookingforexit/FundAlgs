@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "../include/math_operations.h"
-#include "../include/argument_processing.h"
+#include "math_operations.h"
+#include "argument_processing.h"
 
 void print_help_msg(char* program_name)
 {
@@ -11,7 +11,7 @@ void print_help_msg(char* program_name)
     printf("For '-d' number has to be <= 10.\n");
 }
 
-const status_code argument_validation(const int argc, char* argv[])
+status_code argument_validation(const int argc, char* argv[])
 {
     if (argv == NULL)
     {
@@ -47,9 +47,9 @@ const status_code argument_validation(const int argc, char* argv[])
         return INVALID_ARGUMENT;
     }
 
-    if (flag[1] != 'h' && flag[1] != 'p' &&
+    if ((flag[1] != 'h' && flag[1] != 'p' &&
         flag[1] != 's' && flag[1] != 'a' &&
-        flag[1] != 'f' || flag[2] != '\0')
+        flag[1] != 'f') || flag[2] != '\0')
     {
         return INVALID_ARGUMENT;
     }
