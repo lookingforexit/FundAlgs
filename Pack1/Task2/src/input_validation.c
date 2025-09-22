@@ -5,8 +5,8 @@
 
 void print_help_msg(char* program_name)
 {
-    printf("%s\n", program_name);
-    printf("Usage: <amount of requests>\n");
+    printf("Usage: %s\n", program_name);
+    printf("Enter the amount of requests: <amount>\n");
     printf("Next n lines has to consist of only 1 positive number.\n");
 }
 
