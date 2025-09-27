@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include <math.h>
 #include "math_calculations.h"
 #include "print_calculations.h"
 
-void print_calculations(const int precision)
+void print_calculations(const int input_precision)
 {
-    long double eps = calc_eps(precision);
+    long double eps = calc_eps(input_precision);
+    int precision = (int)ceil(-log10(eps));
 
     printf("\n");
 

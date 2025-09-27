@@ -5,7 +5,7 @@ long double calc_eps(const int precision);
 
 long long factorial(const int n);
 
-long long combinations(const int k, const int m);
+long long combinations(int k, const int m);
 
 long double calc_e_lim_in_point(const int n);
 

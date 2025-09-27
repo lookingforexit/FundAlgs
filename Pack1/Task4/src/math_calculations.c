@@ -26,9 +26,24 @@ long long factorial(const int n)
     return factorial;
 }
 
-long long combinations(const int k, const int m)
+long long combinations(int k, const int m)
 {
-    long long combinations = factorial(m) / (factorial(m - k) * factorial(k));
+    if (k < 0 || k > m)
+    {
+        return 0;
+    }
+
+    if (k > m - k)
+    {
+        k = m - k;
+    }
+
+    long long combinations = 1;
+    for (long long i = 1; i <= k; ++i)
+    {
+        combinations *= (m - k + i);
+        combinations /= i;
+    }
 
     return combinations;
 }
@@ -290,10 +305,12 @@ long double calc_root_of_two_equation(const long double eps)
 long double calc_gamma_lim_in_point(const int n)
 {
     long double sum = 0;
+    long double log_value = 0;
 
     for (int k = 1; k <= n; ++k)
     {
-        sum += (long double)(combinations(k, n) * ((k % 2 == 0) ? 1 : -1)) / k * log(factorial(k));
+        sum += (long double)(combinations(k, n) * ((k % 2 == 0) ? 1 : -1)) / k * log_value;
+        log_value += log(k + 1);
     }
 
     return sum;
@@ -301,11 +318,11 @@ long double calc_gamma_lim_in_point(const int n)
 
 long double calc_gamma_lim(const long double eps)
 {
-    int n = 1;
-    long double prev_lim_value = calc_gamma_lim_in_point(n++);
-    long double lim_value = calc_gamma_lim_in_point(n++);
+    int n = 2;
+    long double prev_lim_value = calc_gamma_lim_in_point(n - 1);
+    long double lim_value = calc_gamma_lim_in_point(n);
 
-    while (fabsl(lim_value - prev_lim_value) >= eps && n != 20) 
+    while (fabsl(lim_value - prev_lim_value) >= eps && n != 50) 
     {
         ++n;
         prev_lim_value = lim_value;
