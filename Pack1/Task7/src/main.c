@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "argument_validation.h"
-#include "basis_determinator.h"
+#include "utils.h"
 
 int main(int argc, char* argv[])
 {
