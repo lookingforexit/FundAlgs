@@ -3,6 +3,19 @@
 #include <ctype.h>
 #include "utils.h"
 
+char* delete_leading_zeros(char* str)
+{
+    while (*str == '0')
+    {
+        ++str;
+    }
+    if (*str == '\0')
+    {
+        return "0";
+    }
+    return str;
+}
+
 void determine_the_basis(const char* input_filename, const char* output_filename)
 {
     FILE* input_file = fopen(input_filename, "r");
@@ -33,8 +46,6 @@ void determine_the_basis(const char* input_filename, const char* output_filename
 
         if (isdigit(ch) || isalpha(ch))
         {
-            fputc(ch, output_file);
-
             is_printed = 0;
             
             if (isdigit(ch))
@@ -44,8 +55,7 @@ void determine_the_basis(const char* input_filename, const char* output_filename
             }
             else
             {
-                ch = toupper(ch);
-                int value = (ch - 'A') + 10;
+                int value = isupper(ch) ? (ch - 'A') + 10 : (ch - 'a') + 10;
                 basis = value >= basis ? (value + 1) : basis;
             }
 
@@ -57,7 +67,7 @@ void determine_the_basis(const char* input_filename, const char* output_filename
             if (basis >= 2 && basis <= 36 && !is_printed)
             {
                 num_str[pos] = '\0';
-                fprintf(output_file, " %d %lld\n", basis, strtoll(num_str, NULL, basis));
+                fprintf(output_file, "%s %d %lld\n", delete_leading_zeros(num_str), basis, strtoll(num_str, NULL, basis));
                 is_printed = 1;
             }
             basis = 2;
@@ -67,7 +77,7 @@ void determine_the_basis(const char* input_filename, const char* output_filename
     if (basis >= 2 && !is_printed)
     {
         num_str[pos] = '\0';
-        fprintf(output_file, " %d %lld\n", basis, strtoll(num_str, NULL, basis));
+        fprintf(output_file, "%s %d %lld\n", delete_leading_zeros(num_str), basis, strtoll(num_str, NULL, basis));
     }
     fprintf(output_file, "Done");
 
