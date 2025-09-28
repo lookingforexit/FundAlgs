@@ -6,11 +6,9 @@ typedef enum
     OK,
     INVALID_ARGUMENT,
     INVALID_ARGUMENT_COUNT
-} status_code;
+} status_code_t;
 
-status_code argument_validation(const int argc, char* argv[]);
-
-void argument_processing(char* argv[]);
+status_code_t argument_validation(const int argc, char* argv[]);
 
 void print_help_msg(char* program_name);
 

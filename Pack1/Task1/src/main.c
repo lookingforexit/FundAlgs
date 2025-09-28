@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include "argument_processing.h"
-#include "math_operations.h"
+#include "opt_handler.h"
 
 int main(int argc, char *argv[])
 {
-    const status_code code = argument_validation(argc, argv);
+    const status_code_t code = argument_validation(argc, argv);
 
     if (code == INVALID_ARGUMENT)
     {
@@ -19,7 +19,18 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    argument_processing(argv);
+    callback_t handlers[7] = 
+    {
+        handle_h_opt,
+        handle_p_opt,
+        handle_s_opt,
+        handle_e_opt,
+        handle_a_opt,
+        handle_f_opt
+    };
+
+    option_t option = get_option(argv);
+    handlers[option](argv);
 
     return 0;
 }
